@@ -18,8 +18,8 @@ public class AuthorizationCodeGrantFlow {
     private static final String authEndpoint = "http://localhost:9000/oauth2/authorize";
     private static final String tokenEndpoint = "http://localhost:9000/oauth2/token";
 
-    private static final String clientId = "oidc-client";
-    private static final String clientSecret = "secret";
+    private static final String clientId = "client1";
+    private static final String clientSecret = "supersecret";
     private static final String redirectUri = "https://example.net/authorized";
 
     private static final String responseType = "code";
