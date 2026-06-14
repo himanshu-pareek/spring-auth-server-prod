@@ -74,6 +74,65 @@ ref: https://docs.spring.io/spring-authorization-server/reference/core-model-com
 * `OAuth2TokenCustomizer` - Provides the ability to customize the attributes of an `OAuth2Token`, which are accessbile in the provided `OAuth2TokenContext`.
 * `SessionRegistry` - Used to track authenticated sessions, if OpenID Connect 1.0 is enabled.
 
+## Productionize the Auth Server
+
+### Persisting RSA KeyPair across restarts
+
+1. Generate the private key
+    ```shell
+    # Generates a 2048-bit RSA private key directly into PKCS#8 PEM format
+    openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
+    ```
+2. Put private key into environment variable
+   ```shell
+   # A) If using kubernetes to deploy the server, then
+   # A.1) Create k8s secret:
+   kubectl create secret generic rsa-keys --from-file=PRIVATE_KEY_ENV=./private_key.pem
+   
+   # A.2) Map it into your deployment file:
+   apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+    name: my-java-app
+    spec:
+    template:
+    spec:
+    containers:
+    - name: my-java-container
+    image: my-registry/my-java-app:latest
+    env:
+      - name: RSA_PRIVATE_KEY
+      valueFrom:
+      secretKeyRef:
+      name: rsa-keys
+      key: PRIVATE_KEY_ENV
+   
+   # B) In local, create environment variable using the content of the file:
+   export RSA_PRIVATE_KEY="\"$(cat private_key.pem | tr -d '\n')\""
+    ```
+3. Loading it in Java (Look at the [RSAKeyConfig](./src/main/java/dev/javarush/youtube/auth_server/security/RSAKeyConfig.java) for code)
+   ```java
+   private static KeyPair generateRsaKey2() {
+        // // 1. Read and clean the private key string from the environment
+        String privateKeyContent = getPrivateKeyContent();
+
+        try {
+            KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+
+            // 2. Decode and generate the Private Key
+            PrivateKey privateKey = getPrivateKey(privateKeyContent, keyFactory);
+
+            // 3. Derive the Public Key from the Private Key
+            // Standard Java RSA private keys implement the RSAPrivateCrtKey interface
+            PublicKey publicKey = getPublicKey(privateKey, keyFactory);
+
+            return new KeyPair(publicKey, privateKey);
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    ```
+
 ## HOWTO
 
 ### Test Authorization Code Authorization Grant Flow
