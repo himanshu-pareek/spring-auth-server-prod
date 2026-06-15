@@ -147,6 +147,7 @@ ref: https://docs.spring.io/spring-authorization-server/reference/core-model-com
    docker compose -f compose.yaml up -d
     ```
 2. Create environment variable: Make sure all the environment variables are set (or present in `.env` file) as mentioned in the `.env.template` file.
+3. Run the application
 
 ### Test Authorization Code Authorization Grant Flow
 

@@ -20,10 +20,15 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-security-oauth2-authorization-server")
 	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
+	implementation("org.springframework.boot:spring-boot-starter-flyway")
+	implementation("org.flywaydb:flyway-database-postgresql")
+
 	runtimeOnly("org.postgresql:postgresql")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-security-oauth2-authorization-server-test")
 	testImplementation("org.springframework.boot:spring-boot-starter-data-jdbc-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation("org.springframework.boot:spring-boot-starter-flyway-test")
 }
 
 tasks.withType<Test> {
