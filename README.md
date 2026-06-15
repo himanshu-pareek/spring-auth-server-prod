@@ -135,6 +135,19 @@ ref: https://docs.spring.io/spring-authorization-server/reference/core-model-com
 
 ## HOWTO
 
+### Start application
+
+1. Prepare Database Server by running the following command to sping up a PostgreSQL database in docker container or you can use any other instance as well:
+   ```shell
+   # This command requires some environment variables to be present
+   # (mentioned in the file itself)
+   # Those environment variables can be provided by creating a
+   # .env file in the current directory as well following the syntax
+   # of .env.template
+   docker compose -f compose.yaml up -d
+    ```
+2. Create environment variable: Make sure all the environment variables are set (or present in `.env` file) as mentioned in the `.env.template` file.
+
 ### Test Authorization Code Authorization Grant Flow
 
 1. Modify the constants inside [AuthorizationCodeGrantFlow.java](./flows/AuthorizationCodeGrantFlow.java) file
@@ -147,4 +160,3 @@ ref: https://docs.spring.io/spring-authorization-server/reference/core-model-com
 ## References
 
 1. The OAuth 2.1 Authorization Framework - https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-07
-2. 

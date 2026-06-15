@@ -19,7 +19,10 @@ repositories {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-security-oauth2-authorization-server")
+	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
+	runtimeOnly("org.postgresql:postgresql")
 	testImplementation("org.springframework.boot:spring-boot-starter-security-oauth2-authorization-server-test")
+	testImplementation("org.springframework.boot:spring-boot-starter-data-jdbc-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 

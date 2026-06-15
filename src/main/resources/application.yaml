@@ -1,6 +1,10 @@
 spring:
   application:
     name: auth-server
+  datasource:
+    url: jdbc:postgresql://${POSTGRESQL_SERVER_HOST}/${POSTGRESQL_DB_NAME}
+    username: ${POSTGRESQL_USER_NAME}
+    password: ${POSTGRESQL_USER_PASSWORD}
 
 server:
   port: 9000
