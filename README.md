@@ -6,6 +6,8 @@
 
 ## Core Model / Components
 
+[Default DB Schema](https://github.com/spring-projects/spring-security/tree/main/oauth2/oauth2-authorization-server/src/main/resources/org/springframework/security/oauth2/server/authorization) provided by Spring Security Authorization Server
+
 ref: https://docs.spring.io/spring-authorization-server/reference/core-model-components.html
 
 * `RegisteredClient` - A client that is registered with the authorization server
