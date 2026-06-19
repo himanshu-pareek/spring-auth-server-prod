@@ -4,6 +4,7 @@ import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 import dev.javarush.youtube.auth_server.authorization.AuthorizationConfig;
 import dev.javarush.youtube.auth_server.client.ClientConfig;
+import dev.javarush.youtube.auth_server.consent.ConsentConfig;
 import dev.javarush.youtube.auth_server.user.UserConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +27,8 @@ import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
         RSAKeyConfig.class, // Configuration related to RSA Keys
         ClientConfig.class, // Configuration related to OAuth2 clients
         UserConfig.class, // Configuration related to users
-        AuthorizationConfig.class // Configuration related to authorization tokens
+        AuthorizationConfig.class, // Configuration related to authorization tokens
+        ConsentConfig.class // Configuration related to consent (scopes allowed for client by resource-owner)
 })
 public class SecurityConfig {
     @Bean
