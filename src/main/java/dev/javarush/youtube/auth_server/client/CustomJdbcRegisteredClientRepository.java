@@ -32,7 +32,7 @@ public class CustomJdbcRegisteredClientRepository implements RegisteredClientRep
     @Override
     public void save(@NonNull RegisteredClient registeredClient) {
         ClientEntity clientEntity = ClientEntity.fromObject(registeredClient, this.objectMapper);
-        this.entityRepository.save(clientEntity);
+        this.entityRepository.upsert(clientEntity);
     }
 
     @Override

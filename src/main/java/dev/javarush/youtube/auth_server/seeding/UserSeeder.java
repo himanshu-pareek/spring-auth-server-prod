@@ -20,14 +20,14 @@ public class UserSeeder implements CommandLineRunner {
     public void run(String... args) throws Exception {
         if (!this.userDetailsManager.userExists("alice")) {
             UserDetails alice = User.withUsername("alice")
-                    .password("passAlice")
+                    .password("{noop}passAlice")
                     .roles("USER", "ADMIN")
                     .build();
             this.userDetailsManager.createUser(alice);
         }
         if (!this.userDetailsManager.userExists("bob")) {
             UserDetails bob = User.withUsername("bob")
-                    .password("passBob")
+                    .password("{noop}passBob")
                     .roles("USER")
                     .build();
             this.userDetailsManager.createUser(bob);

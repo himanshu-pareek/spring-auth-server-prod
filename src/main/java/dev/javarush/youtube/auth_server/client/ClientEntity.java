@@ -151,6 +151,10 @@ public class ClientEntity implements Persistable<String> {
         return this.id;
     }
 
+    public void markOld() {
+        this.isNew = false;
+    }
+
     @Override
     public boolean isNew() {
         return this.isNew;

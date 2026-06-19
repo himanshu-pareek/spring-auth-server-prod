@@ -31,7 +31,7 @@ public class ClientSeeder implements CommandLineRunner {
         RegisteredClient client = RegisteredClient.withId(UUID.randomUUID().toString())
                 .clientId("client1")
                 .clientIdIssuedAt(Instant.now())
-                .clientSecret("supersecret")
+                .clientSecret("{noop}supersecret")
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)

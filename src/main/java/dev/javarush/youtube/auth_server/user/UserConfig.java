@@ -9,6 +9,8 @@ import javax.sql.DataSource;
 public class UserConfig {
     @Bean
     UserDetailsManager userDetailsManager(DataSource dataSource) {
-        return new JdbcUserDetailsManager(dataSource);
+        var manager = new JdbcUserDetailsManager(dataSource);
+        manager.setEnableUpdatePassword(true);
+        return manager;
     }
 }
