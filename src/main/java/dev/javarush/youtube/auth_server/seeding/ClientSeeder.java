@@ -25,6 +25,9 @@ public class ClientSeeder implements CommandLineRunner {
 
     @Override
     public void run(String @NonNull ... args) {
+        if (this.clientRepository.findByClientId("client1") != null) {
+            return;
+        }
         RegisteredClient client = RegisteredClient.withId(UUID.randomUUID().toString())
                 .clientId("client1")
                 .clientIdIssuedAt(Instant.now())

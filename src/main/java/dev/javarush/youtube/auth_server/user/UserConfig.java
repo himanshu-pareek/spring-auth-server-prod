@@ -1,0 +1,14 @@
+package dev.javarush.youtube.auth_server.user;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
+
+import javax.sql.DataSource;
+
+public class UserConfig {
+    @Bean
+    UserDetailsManager userDetailsManager(DataSource dataSource) {
+        return new JdbcUserDetailsManager(dataSource);
+    }
+}

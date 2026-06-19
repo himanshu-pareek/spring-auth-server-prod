@@ -3,6 +3,7 @@ package dev.javarush.youtube.auth_server.security;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 import dev.javarush.youtube.auth_server.client.ClientConfig;
+import dev.javarush.youtube.auth_server.user.UserConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -27,10 +28,10 @@ import org.springframework.security.web.authentication.LoginUrlAuthenticationEnt
 import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
 
 @Configuration
-@EnableJdbcRepositories
 @Import({
         RSAKeyConfig.class, // Configuration related to RSA Keys
-        ClientConfig.class // Configuration related to OAuth2 clients
+        ClientConfig.class, // Configuration related to OAuth2 clients
+        UserConfig.class // Configuration related to users
 })
 public class SecurityConfig {
     @Bean
@@ -64,19 +65,6 @@ public class SecurityConfig {
                 )
                 .formLogin(Customizer.withDefaults());
         return http.build();
-    }
-
-    @Bean
-    UserDetailsService userDetailsService() {
-        UserDetails alice = User.withUsername("alice")
-                .password("passAlice")
-                .roles("USER", "ADMIN")
-                .build();
-        UserDetails bob = User.withUsername("bob")
-                .password("passBob")
-                .roles("USER")
-                .build();
-        return new InMemoryUserDetailsManager(alice, bob);
     }
 
     @Bean
