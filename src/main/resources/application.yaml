@@ -11,6 +11,13 @@ spring:
       port: ${REDIS_PORT}
       username: ${REDIS_USER}
       password: ${REDIS_PASSWORD}
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: ${GITHUB_CLIENT_ID}
+            client-secret: ${GITHUB_CLIENT_SECRET}
 
 server:
   port: 9000

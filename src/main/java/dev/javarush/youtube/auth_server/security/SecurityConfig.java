@@ -66,6 +66,11 @@ public class SecurityConfig {
                         form -> form.loginPage("/auth/login")
                                 .defaultSuccessUrl("/")
                                 .permitAll()
+                )
+                .oauth2Login(oauth2 -> oauth2
+                        .loginPage("/auth/login")
+                        .defaultSuccessUrl("/")
+                        .permitAll()
                 );
         return http.build();
     }
