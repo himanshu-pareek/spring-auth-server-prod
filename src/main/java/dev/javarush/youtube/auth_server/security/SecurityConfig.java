@@ -45,7 +45,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
                 .exceptionHandling(e -> e
                         .defaultAuthenticationEntryPointFor(
-                                new LoginUrlAuthenticationEntryPoint("/login"),
+                                new LoginUrlAuthenticationEntryPoint("/auth/login"),
                                 new MediaTypeRequestMatcher(MediaType.TEXT_HTML)
                         ));
 
@@ -58,9 +58,15 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(
                         authorize ->
-                                authorize.anyRequest().authenticated()
+                                authorize
+                                        .requestMatchers("/auth/login", "/css/*", "/images/*", "/error").permitAll()
+                                        .anyRequest().authenticated()
                 )
-                .formLogin(Customizer.withDefaults());
+                .formLogin(
+                        form -> form.loginPage("/auth/login")
+                                .defaultSuccessUrl("/")
+                                .permitAll()
+                );
         return http.build();
     }
 

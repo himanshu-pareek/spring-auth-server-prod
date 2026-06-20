@@ -25,6 +25,8 @@ dependencies {
 	// To store the user sessions in Redis
 	// Ref - https://docs.spring.io/spring-session/reference/guides/boot-redis.html#boot-sample
 	implementation("org.springframework.boot:spring-boot-starter-session-data-redis")
+	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+	implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity6")
 
 	runtimeOnly("org.postgresql:postgresql")
 
