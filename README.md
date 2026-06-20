@@ -2,7 +2,14 @@
 
 ## Features
 
-* Created using Spring Authorization Server
+* Created using [Spring Authorization Server](https://docs.spring.io/spring-authorization-server/reference/index.html)
+* Stores the users, clients, generated tokens and granted scopes in the postgresql database
+* Stores the user session in Redis
+* Persists user sessions, generated tokens and granted scopes across server restarts and scross multiple instances
+* Provides ability to log in using Github
+  * Other Identity Providers (OAuth2 Authorization Servers) can be integrated in the similar way
+* Provides ability to log in using One Time Token (OTT)
+* Uses custom configured pages for all kind of loging options
 
 ## Core Model / Components
 
@@ -163,3 +170,4 @@ ref: https://docs.spring.io/spring-authorization-server/reference/core-model-com
 ## References
 
 1. The OAuth 2.1 Authorization Framework - https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-07
+2. Spring Authorization Server - https://docs.spring.io/spring-authorization-server/reference/index.html
