@@ -5,6 +5,12 @@ spring:
     url: jdbc:postgresql://${POSTGRESQL_SERVER_HOST}/${POSTGRESQL_DB_NAME}
     username: ${POSTGRESQL_USER_NAME}
     password: ${POSTGRESQL_USER_PASSWORD}
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      username: ${REDIS_USER}
+      password: ${REDIS_PASSWORD}
 
 server:
   port: 9000

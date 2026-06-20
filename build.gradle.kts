@@ -22,6 +22,9 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
 	implementation("org.springframework.boot:spring-boot-starter-flyway")
 	implementation("org.flywaydb:flyway-database-postgresql")
+	// To store the user sessions in Redis
+	// Ref - https://docs.spring.io/spring-session/reference/guides/boot-redis.html#boot-sample
+	implementation("org.springframework.boot:spring-boot-starter-session-data-redis")
 
 	runtimeOnly("org.postgresql:postgresql")
 
