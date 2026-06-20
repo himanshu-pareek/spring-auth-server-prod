@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/auth-login.css}">
+</head>
+<body>
+<div class="login-wrapper">
+    <div class="login-container">
+        <form th:action="@{/auth/login/ott}" method="post" class="login-form">
+            Enter the OTT sent to you
+            <div class="input-group">
+                <input type="text" name="token" placeholder="Enter token" th:value="${param.token}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign In</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

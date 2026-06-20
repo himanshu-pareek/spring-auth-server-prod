@@ -1,4 +1,4 @@
-package dev.javarush.youtube.auth_server.security;
+package dev.javarush.youtube.auth_server.jwt;
 
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
@@ -7,6 +7,8 @@ import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 import org.jspecify.annotations.NonNull;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
 
 import java.security.*;
 import java.security.interfaces.RSAPrivateCrtKey;
@@ -18,7 +20,12 @@ import java.security.spec.RSAPublicKeySpec;
 import java.util.Base64;
 import java.util.UUID;
 
-public class RSAKeyConfig {
+public class JWTConfig {
+    @Bean
+    JwtDecoder jwtDecoder(JWKSource<SecurityContext> jwkSource) {
+        return OAuth2AuthorizationServerConfiguration.jwtDecoder(jwkSource);
+    }
+
     @Bean
     JWKSource<SecurityContext> jwkSource() {
         KeyPair keyPair = generateRsaKey();

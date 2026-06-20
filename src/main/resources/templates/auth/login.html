@@ -16,6 +16,9 @@
         <div th:if="${param.logout}" class="alert alert-success">
             You have been logged out successfully.
         </div>
+        <div th:if="${param.ottSent}" class="alert alert-success">
+            A one-time magic link has been sent to your email.
+        </div>
 
         <form th:action="@{/auth/login}" method="post" class="login-form">
             <div class="input-group">
@@ -30,7 +33,18 @@
         </form>
 
         <div class="divider">
-            <span>OR</span>
+            <span>OR PASSWORDLESS</span>
+        </div>
+
+        <form th:action="@{/ott/generate}" method="post" class="login-form">
+            <div class="input-group">
+                <input type="text" id="ott-username" name="username" placeholder="Enter username for magic link" required>
+            </div>
+            <button type="submit" class="btn btn-secondary">Send Magic Link</button>
+        </form>
+
+        <div class="divider">
+            <span>OR SOCIAL</span>
         </div>
 
         <div class="oauth2-group">

@@ -1,4 +1,4 @@
-package dev.javarush.youtube.auth_server.auth;
+package dev.javarush.youtube.auth_server.authentication;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,5 +11,10 @@ public class LoginController {
     @GetMapping
     String loginPage() {
         return "auth/login";
+    }
+
+    @GetMapping("ott")
+    String ottLoginPage() {
+        return "auth/ott-login";
     }
 }
