@@ -171,3 +171,7 @@ ref: https://docs.spring.io/spring-authorization-server/reference/core-model-com
 
 1. The OAuth 2.1 Authorization Framework - https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-07
 2. Spring Authorization Server - https://docs.spring.io/spring-authorization-server/reference/index.html
+3. OAuth2 Playlist - https://youtube.com/playlist?list=PLbk-lC-jmHejz7ZTfOqFyXH15yt6b3WHe
+4. Spring Authorization Server Video - https://youtu.be/NcXpiQWn_GQ
+5. Spring OAuth2 Client Video - https://youtu.be/9PY_Z5h16Js
+
