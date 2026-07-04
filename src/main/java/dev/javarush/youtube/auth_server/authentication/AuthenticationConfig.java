@@ -2,6 +2,9 @@ package dev.javarush.youtube.auth_server.authentication;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
+import org.springframework.jdbc.core.JdbcOperations;
+import org.springframework.security.authentication.ott.JdbcOneTimeTokenService;
+import org.springframework.security.authentication.ott.OneTimeTokenService;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.ott.OneTimeTokenGenerationSuccessHandler;
@@ -37,7 +40,12 @@ public class AuthenticationConfig {
     }
 
     @Bean
-    public OneTimeTokenGenerationSuccessHandler ottSuccessHandler() {
+    OneTimeTokenGenerationSuccessHandler ottSuccessHandler() {
         return new ConsoleOTTGenerationSuccessHandler();
+    }
+
+    @Bean
+    OneTimeTokenService oneTimeTokenService(JdbcOperations jdbcOperations) {
+        return new JdbcOneTimeTokenService(jdbcOperations);
     }
 }
