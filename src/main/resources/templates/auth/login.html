@@ -23,11 +23,11 @@
         <form th:action="@{/auth/login}" method="post" class="login-form">
             <div class="input-group">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" required autofocus>
+                <input type="text" id="username" name="username" autocomplete="username webauthn" required autofocus>
             </div>
             <div class="input-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" autocomplete="password webauthn" required>
             </div>
             <button type="submit" class="btn btn-primary">Sign In</button>
         </form>
