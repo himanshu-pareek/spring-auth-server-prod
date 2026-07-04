@@ -8,6 +8,10 @@ import org.springframework.security.authentication.ott.OneTimeTokenService;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.ott.OneTimeTokenGenerationSuccessHandler;
+import org.springframework.security.web.webauthn.management.JdbcPublicKeyCredentialUserEntityRepository;
+import org.springframework.security.web.webauthn.management.JdbcUserCredentialRepository;
+import org.springframework.security.web.webauthn.management.PublicKeyCredentialUserEntityRepository;
+import org.springframework.security.web.webauthn.management.UserCredentialRepository;
 
 public class AuthenticationConfig {
     @Bean
@@ -17,7 +21,7 @@ public class AuthenticationConfig {
                 .authorizeHttpRequests(
                         authorize ->
                                 authorize
-                                        .requestMatchers("/auth/login/*", "/css/*", "/images/*", "/error").permitAll()
+                                        .requestMatchers("/auth/login/*", "/css/*", "/js/*", "/images/*", "/error").permitAll()
                                         .anyRequest().authenticated()
                 )
                 .formLogin(
@@ -35,6 +39,11 @@ public class AuthenticationConfig {
                         .loginPage("/auth/login")
                         .loginProcessingUrl("/auth/login/ott")
                         .permitAll()
+                )
+                .webAuthn(webAuthn -> webAuthn
+                        .rpId("localhost")
+                        .rpName("Demo Spring Auth Server")
+                        .allowedOrigins("http://localhost:9000")
                 );
         return http.build();
     }
@@ -47,5 +56,15 @@ public class AuthenticationConfig {
     @Bean
     OneTimeTokenService oneTimeTokenService(JdbcOperations jdbcOperations) {
         return new JdbcOneTimeTokenService(jdbcOperations);
+    }
+
+    @Bean
+    PublicKeyCredentialUserEntityRepository publicKeyCredentialUserEntityRepository(JdbcOperations jdbcOperations) {
+        return new JdbcPublicKeyCredentialUserEntityRepository(jdbcOperations);
+    }
+
+    @Bean
+    UserCredentialRepository userCredentialRepository(JdbcOperations jdbcOperations) {
+        return new JdbcUserCredentialRepository(jdbcOperations);
     }
 }

@@ -36,6 +36,14 @@
             <span>OR PASSWORDLESS</span>
         </div>
 
+        <form th:action="@{/dummy}" method="post" class="login-form" id="passkey-login-form">
+            <button type="submit" class="btn btn-primary">
+                Login with PassKey
+            </button>
+        </form>
+
+        <div class="divider"></div>
+
         <form th:action="@{/ott/generate}" method="post" class="login-form">
             <div class="input-group">
                 <input type="text" id="ott-username" name="username" placeholder="Enter username for magic link" required>
@@ -54,5 +62,7 @@
         </div>
     </div>
 </div>
+<script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
+<script type="module" th:src="@{/js/auth-login.js}"></script>
 </body>
 </html>

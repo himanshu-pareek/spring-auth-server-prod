@@ -28,6 +28,9 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity6")
 	implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
+	// For WebAuthn and Passkeys Authentication
+	// Ref - https://docs.spring.io/spring-security/reference/servlet/authentication/passkeys.html
+	implementation("org.springframework.security:spring-security-webauthn")
 
 	runtimeOnly("org.postgresql:postgresql")
 
