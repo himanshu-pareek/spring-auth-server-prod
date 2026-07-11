@@ -174,4 +174,12 @@ ref: https://docs.spring.io/spring-authorization-server/reference/core-model-com
 3. OAuth2 Playlist - https://youtube.com/playlist?list=PLbk-lC-jmHejz7ZTfOqFyXH15yt6b3WHe
 4. Spring Authorization Server Video - https://youtu.be/NcXpiQWn_GQ
 5. Spring OAuth2 Client Video - https://youtu.be/9PY_Z5h16Js
-
+6. Passkeys :: Spring Security - https://docs.spring.io/spring-security/reference/servlet/authentication/passkeys.html
+7. @simplewebauthn/browser | SimpleWebAuthn - https://simplewebauthn.dev/docs/packages/browser
+8. [WebAuthn & Passkeys presentation](./docs/WebAuthn%20&%20PassKeys.pdf)
+9. WebAuthn - Wikipedia - https://en.wikipedia.org/wiki/WebAuthn
+10. Web Authentication: An API for accessing Public Key Credentials - Level 2 - https://www.w3.org/TR/webauthn/
+11. Web Authentication API - Web APIs | MDN - https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API
+12. About passkeys - Github Docs - https://docs.github.com/en/authentication/authenticating-with-a-passkey/about-passkeys
+13. A Tour of WebAuthn - Adam Langlay - http://imperialviolet.org/tourofwebauthn/tourofwebauthn.html
+14. PublicKeyCredentialCreationOptions - Web API | MDN - https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredentialCreationOptions

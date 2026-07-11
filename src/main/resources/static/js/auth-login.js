@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 const signInUsingPassKey = async (authenticationOptions, headers, autoFill) => {
     try {
+        // Ref: https://simplewebauthn.dev/docs/packages/browser
         const { startAuthentication } = window.SimpleWebAuthnBrowser;
 
         if (!startAuthentication) {

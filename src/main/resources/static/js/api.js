@@ -1,3 +1,4 @@
+// Ref: https://docs.spring.io/spring-security/reference/servlet/authentication/passkeys.html
 const AUTH_OPTIONS_PATH = '/webauthn/authenticate/options'
 const AUTH_VERIFY_PATH = '/login/webauthn'
 
